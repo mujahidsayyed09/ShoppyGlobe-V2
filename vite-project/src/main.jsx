@@ -1,47 +1,44 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import App from './App.jsx'
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
+import App from './App.jsx';
 import NotFound from './components/NotFound.jsx';
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createHashRouter, RouterProvider } from 'react-router-dom'; // ✅ Changed to createHashRouter
 import BookList from './components/BookList.jsx';
 import BookDetails from './components/BookDetails.jsx';
-import { Provider } from "react-redux";
-import store from "./redux/store";
+import { Provider } from 'react-redux';
+import store from './redux/store';
 import AddBookPage from './components/AddBookPage.jsx';
 
-
-const appRouter = createBrowserRouter([
+const appRouter = createHashRouter([
   {
-    path: "/",
+    path: '/',
     element: <App />,
     children: [
       {
-        path: "/",
+        path: '/',
         element: <BookList />,
       },
       {
-        path: "/book/:id", // ✅ Must be inside children
+        path: '/book/:id',
         element: <BookDetails />,
       },
       {
-        path: "/books/:category",
+        path: '/books/:category',
         element: <BookList />,
       },
       {
-        path: "*",
-        element: <NotFound />,
+        path: '/add-book',
+        element: <AddBookPage />,
       },
       {
-        path: "/add-book",
-        element: <AddBookPage />,
-      }
-
+        path: '*',
+        element: <NotFound />,
+      },
     ],
   },
 ]);
 
-
-createRoot(document.getElementById("root")).render(
+createRoot(document.getElementById('root')).render(
   <StrictMode>
     <Provider store={store}>
       <RouterProvider router={appRouter} />

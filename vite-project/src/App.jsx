@@ -1,4 +1,3 @@
-
 import "./components/style.css";
 import Header from "./components/Header";
 import { Outlet } from "react-router-dom";
