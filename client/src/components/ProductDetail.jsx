@@ -6,7 +6,7 @@ import "./ProductDetail.css";
 import Loader from "./Loader";
 import { useUser } from "../context/UserContext"; 
 
-const BASE_URL = "https://shoppyglobe-backend.onrender.com";
+const BASE_URL = "https://shoppyglobe-v2.onrender.com";
 
 export default function ProductDetail() {
   const { id } = useParams();

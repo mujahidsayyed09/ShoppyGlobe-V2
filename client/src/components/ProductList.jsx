@@ -4,7 +4,7 @@ import ProductItem from "./ProductItem";
 import "./ProductList.css";
 import Loader from "./Loader";
 
-const BASE_URL = "https://shoppyglobe-backend.onrender.com";
+const BASE_URL = "https://shoppyglobe-v2.onrender.com";
 
 export default function ProductList() {
   const [products, setProducts] = useState([]);
