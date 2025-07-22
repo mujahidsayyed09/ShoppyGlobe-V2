@@ -1,2 +1,2 @@
 
-export const BASE_URL = "https://shoppyglobe-v2.onrender.com";
+export const BASE_URL = "https://shoppyglobev2.netlify.app";
