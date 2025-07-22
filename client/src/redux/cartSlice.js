@@ -1,12 +1,13 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import { BASE_URL } from "../../config";
 
 //  Add product to cart
 export const addProductToCart = createAsyncThunk(
   "cart/addProduct",
   async (product, { rejectWithValue }) => {
     try {
-      const res = await axios.post("http://localhost:5100/api/cart", {
+      const res = await axios.post(`${BASE_URL}/api/cart`, {
         productId: product._id,
         name: product.name,
         image: product.image,
@@ -25,7 +26,7 @@ export const updateProductQuantity = createAsyncThunk(
   "cart/updateQuantity",
   async ({ productId, quantity }, { rejectWithValue }) => {
     try {
-      const res = await axios.put("http://localhost:5100/api/cart", {
+      const res = await axios.put(`${BASE_URL}/api/cart`, {
         productId,
         quantity,
       });
@@ -41,7 +42,7 @@ export const removeProductFromCart = createAsyncThunk(
   "cart/removeProduct",
   async (id, { rejectWithValue }) => {
     try {
-      await axios.delete(`http://localhost:5100/api/cart/${id}`);
+      await axios.delete(`${BASE_URL}/api/cart/${id}`);
       return id;
     } catch (err) {
       return rejectWithValue(err.response?.data || err.message);
