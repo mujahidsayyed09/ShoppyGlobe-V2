@@ -6,6 +6,8 @@ import "./ProductDetail.css";
 import Loader from "./Loader";
 import { useUser } from "../context/UserContext"; 
 
+const BASE_URL = "https://shoppyglobe-backend.onrender.com";
+
 export default function ProductDetail() {
   const { id } = useParams();
   const dispatch = useDispatch();
@@ -15,7 +17,7 @@ export default function ProductDetail() {
   const [error, setError] = useState("");
 
   useEffect(() => {
-    fetch(`http://localhost:5100/api/products/${id}`)
+    fetch(`${BASE_URL}/api/products/${id}`)
       .then((res) => res.json())
       .then((data) => setProduct(data))
       .catch(() => setError("Product not found"));

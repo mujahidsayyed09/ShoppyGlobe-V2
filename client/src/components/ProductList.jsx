@@ -4,6 +4,8 @@ import ProductItem from "./ProductItem";
 import "./ProductList.css";
 import Loader from "./Loader";
 
+const BASE_URL = "https://shoppyglobe-backend.onrender.com";
+
 export default function ProductList() {
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
@@ -12,7 +14,7 @@ export default function ProductList() {
 
   useEffect(() => {
     setLoading(true); // Set loading true
-    fetch("http://localhost:5100/api/products")
+    fetch(`${BASE_URL}/api/products`)
       .then((res) => res.json())
       .then((data) => {
         setProducts(data);

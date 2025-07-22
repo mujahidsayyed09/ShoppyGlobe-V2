@@ -7,8 +7,7 @@ const Product = require('./models/Product');
 
 const MONGO_URL = process.env.MONGO_URL;
 
-// Sample data URL (replace with your real one)
-const DATA_URL = 'https://dummyjson.com/products'; // or your own
+const DATA_URL = 'https://dummyjson.com/products'; 
 
 async function seedProducts() {
   try {
@@ -16,7 +15,7 @@ async function seedProducts() {
     console.log('✅ Connected to MongoDB');
 
     const response = await axios.get(DATA_URL);
-    const productsFromApi = response.data.products; // Adjust if your structure is different
+    const productsFromApi = response.data.products; 
 
     const formattedProducts = productsFromApi.map((item) => ({
       name: item.title,
@@ -26,7 +25,7 @@ async function seedProducts() {
       image: item.thumbnail || item.image, // fallback
     }));
 
-    await Product.deleteMany(); // clear old data (optional)
+    await Product.deleteMany();
     const inserted = await Product.insertMany(formattedProducts);
 
     console.log(`✅ ${inserted.length} products inserted into MongoDB`);
