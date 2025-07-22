@@ -1,6 +1,6 @@
 require('dotenv').config();
 const express = require('express');
-const cors = require('cors'); // ✅ only once
+const cors = require('cors'); 
 const mongoose = require('mongoose');
 
 const productRoutes = require('./routes/productRoutes');
@@ -10,26 +10,26 @@ const authRoutes = require('./routes/authRoutes');
 const app = express();
 const PORT = process.env.PORT || 5100;
 
-// ✅ Proper CORS setup for local + Netlify frontend
+
 app.use(cors({
   origin: ['http://localhost:5173', 'https://shoppyglobev2.netlify.app'], // replace with your Netlify URL
   credentials: true
 }));
 
-// ✅ Middleware
+//  Middleware
 app.use(express.json());
 
-// ✅ Test route
+//  Test route
 app.get('/', (req, res) => {
   res.send('ShoppyGlobe API is running...');
 });
 
-// ✅ Routes
+//  Routes
 app.use('/api/products', productRoutes);
 app.use('/api/cart', cartRoutes);
 app.use('/api/auth', authRoutes);
 
-// ✅ MongoDB connection + start server
+//  MongoDB connection + start server
 mongoose.connect(process.env.MONGO_URL)
   .then(() => {
     console.log('✅ MongoDB connected');
