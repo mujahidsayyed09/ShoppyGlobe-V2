@@ -1,0 +1,1 @@
+import{j as o}from"./index-CvURrcG5.js";import{Link as n}from"react-router-dom";function t(){return o.jsxs("div",{className:"notfound-container",children:[o.jsx("h1",{children:"404"}),o.jsx("p",{children:"Oops! Page not found."}),o.jsx(n,{to:"/",className:"home-link",children:"Go to Home"})]})}export{t as default};
