@@ -1,0 +1,1 @@
+import{k as s}from"./index-DxIiwuOJ.js";const a="http://localhost:5100/api/auth",e=async t=>(await s.post(`${a}/register`,t)).data,n=async t=>(await s.post(`${a}/login`,t)).data;export{n as l,e as r};
