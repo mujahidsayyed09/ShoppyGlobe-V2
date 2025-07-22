@@ -10,13 +10,15 @@ const authRoutes = require('./routes/authRoutes');
 const app = express();
 const PORT = process.env.PORT || 5100;
 
-// ✅ Use CORS to allow requests from your frontend
-app.use(cors({
-  origin: "http://localhost:5173", // 👈 Allow your frontend during development
+// ✅ CORS Configuration
+const corsOptions = {
+  origin: ['http://localhost:5173', 'https://shoppyglobe.netlify.app'],
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true,
-}));
+};
+app.use(cors(corsOptions));
 
-// ✅ Middleware to parse JSON
+// ✅ JSON parser
 app.use(express.json());
 
 // ✅ Test route
@@ -24,12 +26,12 @@ app.get('/', (req, res) => {
   res.send('ShoppyGlobe API is running...');
 });
 
-// ✅ API Routes
+// ✅ Routes
 app.use('/api/products', productRoutes);
 app.use('/api/cart', cartRoutes);
 app.use('/api/auth', authRoutes);
 
-// ✅ MongoDB connection and server start
+// ✅ MongoDB Connection
 mongoose.connect(process.env.MONGO_URL)
   .then(() => {
     console.log('✅ MongoDB connected');
