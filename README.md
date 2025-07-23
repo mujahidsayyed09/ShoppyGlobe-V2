@@ -94,7 +94,7 @@ All API endpoints tested using ThunderClient with results verified in MongoDB At
 ```
 shoppyglobe/
 ├── server/
-│   ├── config/
+│   ├── utils/
 │   ├── controllers/
 │   ├── middleware/
 │   ├── models/
@@ -110,7 +110,7 @@ shoppyglobe/
 │   │   ├── assets/
 │   │   ├── components/
 │   │   ├── context/
-│   │   ├── hooks/
+│   │   ├── redux/
 │   │   ├── utils/
 │   │   ├── App.jsx
 │   │   ├── main.jsx
