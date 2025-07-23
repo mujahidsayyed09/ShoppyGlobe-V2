@@ -62,38 +62,30 @@ All API endpoints tested using ThunderClient with results verified in MongoDB At
 | API Route                 | Description              | ThunderClient Screenshot | MongoDB Screenshot           |
 | ------------------------- | ------------------------ | ------------------------ | ---------------------------- |
 | POST `/api/auth/register` | Register a new user      |![](screenshots/user_registration.png)|![](user_registered.png)|
-| POST `/api/auth/login`    | Login user and get token | ![](user_login.png)      |![](user_registered.png)      |
+| POST `/api/auth/login`    | Login user and get token | ![](screenshots/user_login.png)      |![](screenshots/user_registered.png)      |
 
 ### 📦 Product Routes
 
 | API Route               | Description        | ThunderClient Screenshot | MongoDB Screenshot           |
 | ----------------------- | ------------------ | ------------------------ | ---------------------------- |
-| GET `/api/products/`    | Get all products   | ![](GET_Products.png)    | ![](All_Products.png)        |
-| GET `/api/products/:id` | Get single product | ![](GET_ProductsById.png)| ![](All_Products.png)        |
+| GET `/api/products/`    | Get all products   | ![](screenshots/GET_Products.png)    |![](screenshots/All_Products.png)        |
+| GET `/api/products/:id` | Get single product |![](screenshots/GET_ProductsById.png)| ![](screenshots/All_Products.png)        |
 
 ### 🛒 Cart Routes
 
 | API Route                     | Description                 | ThunderClient Screenshot | MongoDB Screenshot          |
 | ----------------------------- | --------------------------- | ------------------------ | --------------------------- |
-| POST `/api/cart/`             | Add to cart (Protected)(Add Bearer <tolken> in Header)  | ![](POST_Cart.png)       | ![](POST_Cart_.png)         |
-| GET `/api/cart/`              | Get cart (Protected)        | ![Get](placeholder)      | ![Cart Get](placeholder)    |
-| PUT `/api/cart/:productId`    | Update quantity (Protected) | ![Update](placeholder)   | ![Cart Update](placeholder) |
-| DELETE `/api/cart/:productId` | Remove item (Protected)     | ![Remove](placeholder)   | ![Cart Remove](placeholder) |
-| DELETE `/api/cart/clear`      | Clear entire cart           | ![Clear](placeholder)    | ![Cart Clear](placeholder)  |
+| POST `/api/cart/`             |Add to cart(Protected)(Add Bearer <tolken> in Header) |![](screenshots/POST_Cart.png)|![](screenshots/POST_Cart_.png)         |
+| GET `/api/cart/`              | Get cart (Protected)        |![](screenshots/GET_Cart.png)|![](screenshots/POST_Cart.png)    |
+| PUT `/api/cart/:productId`    | Update quantity (Protected) |![](screenshots/PUT_Cart_Item.png) |![](screenshots/PUT_Cart_Item_.png) |
+| DELETE `/api/cart/:productId` | Remove item (Protected)     |![](screenshots/DELETE_Cart_Item.png)   |![](screenshots/DELETE_Cart.png) |
 
-### 👤 User Routes
-
-| API Route               | Description         | ThunderClient Screenshot | MongoDB Screenshot           |
-| ----------------------- | ------------------- | ------------------------ | ---------------------------- |
-| GET `/api/user/profile` | Get user profile    | ![Profile](placeholder)  | ![User Profile](placeholder) |
-| PUT `/api/user/profile` | Update user profile | ![Update](placeholder)   | ![User Updated](placeholder) |
 
 ### ⚠️ Miscellaneous
 
 | Test           | Description         | Screenshot            |
 | -------------- | ------------------- | --------------------- |
-| Invalid Route  | 404 Not Found route | ![404](placeholder)   |
-| Error Handling | Global error check  | ![Error](placeholder) |
+|Validation      |  | ![404](placeholder)   |
 
 ---
 
