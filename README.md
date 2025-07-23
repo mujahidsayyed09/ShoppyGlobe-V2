@@ -61,7 +61,7 @@ All API endpoints tested using ThunderClient with results verified in MongoDB At
 
 | API Route                 | Description              | ThunderClient Screenshot | MongoDB Screenshot           |
 | ------------------------- | ------------------------ | ------------------------ | ---------------------------- |
-| POST `/api/auth/register` | Register a new user      |![](screenshots/user_registration.png)|![](user_registered.png)|
+| POST `/api/auth/register` | Register a new user      |![](screenshots/user_registration.png)|![](/screenshotsuser_registered.png)|
 | POST `/api/auth/login`    | Login user and get token | ![](screenshots/user_login.png)      |![](screenshots/user_registered.png)      |
 
 ### 📦 Product Routes
@@ -85,7 +85,7 @@ All API endpoints tested using ThunderClient with results verified in MongoDB At
 
 | Test           | Description         | Screenshot            |
 | -------------- | ------------------- | --------------------- |
-|Validation      |  | ![404](placeholder)   |
+|Validation      | "message": "Access denied. No token provided." | ![](screenshots/Validation.png)   |
 
 ---
 
