@@ -55,7 +55,7 @@ export default function Cart() {
             <img src={item.image} alt={item.name} className="cart-image" />
             <div className="cart-info">
               <h3>{item.name}</h3>
-              <p>₹{item.price}</p>
+              <p>${item.price}</p>
               <div className="quantity-control">
                 <button onClick={() => handleDecrease(item)}>-</button>
                 <span>{item.quantity}</span>
