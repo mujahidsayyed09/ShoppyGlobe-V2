@@ -61,9 +61,8 @@ All API endpoints tested using ThunderClient with results verified in MongoDB At
 
 | API Route                 | Description              | ThunderClient Screenshot | MongoDB Screenshot           |
 | ------------------------- | ------------------------ | ------------------------ | ---------------------------- |
-| POST `/api/auth/register` | Register a new user      | ![Register](<img width="1088" height="641" alt="image" src="https://github.com/user-attachments/assets/92098a95-b983-42b3-9b5c-7b62fd6b79b2" />
-) | ![User Created](<img width="1220" height="557" alt="image" src="https://github.com/user-attachments/assets/d26db517-4e5c-41aa-abf9-6f5c9bc2fa34" />
-) |
+| POST `/api/auth/register` | Register a new user      | <img width="1088" height="641" alt="image" src="https://github.com/user-attachments/assets/92098a95-b983-42b3-9b5c-7b62fd6b79b2" />
+|<img width="1220" height="557" alt="image" src="https://github.com/user-attachments/assets/d26db517-4e5c-41aa-abf9-6f5c9bc2fa34" /> |
 | POST `/api/auth/login`    | Login user and get token | ![Login](placeholder)    | ![User Check](placeholder)   |
 
 ### 📦 Product Routes
