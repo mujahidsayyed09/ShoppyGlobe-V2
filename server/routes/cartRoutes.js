@@ -1,4 +1,3 @@
-// routes/cartRoutes.js
 const express = require('express');
 const router = express.Router();
 const {
@@ -8,10 +7,12 @@ const {
   deleteFromCart
 } = require('../controllers/cartController');
 
-// Routes
-router.get('/', getCartItems);              // ✅ GET all cart items
-router.post('/', addToCart);                // ✅ POST add item to cart
-router.put('/', updateCartItem);            // ✅ PUT update quantity
-router.delete('/:id', deleteFromCart);      // ✅ DELETE remove item
+const verifyToken = require('../middleware/verifyToken'); 
+
+// Protect all cart routes
+router.get('/', verifyToken, getCartItems);              
+router.post('/', verifyToken, addToCart);                
+router.put('/', verifyToken, updateCartItem);            
+router.delete('/:id', verifyToken, deleteFromCart);      
 
 module.exports = router;
