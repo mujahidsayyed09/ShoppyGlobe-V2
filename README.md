@@ -61,7 +61,7 @@ All API endpoints tested using ThunderClient with results verified in MongoDB At
 
 | API Route                 | Description              | ThunderClient Screenshot | MongoDB Screenshot           |
 | ------------------------- | ------------------------ | ------------------------ | ---------------------------- |
-| POST `/api/auth/register` | Register a new user      |![](screenshots/user_registration.png)|![](/screenshotsuser_registered.png)|
+| POST `/api/auth/register` | Register a new user      |![](screenshots/user_registration.png)|![](screenshots/user_registered.png)|
 | POST `/api/auth/login`    | Login user and get token | ![](screenshots/user_login.png)      |![](screenshots/user_registered.png)      |
 
 ### 📦 Product Routes
@@ -75,8 +75,8 @@ All API endpoints tested using ThunderClient with results verified in MongoDB At
 
 | API Route                     | Description                 | ThunderClient Screenshot | MongoDB Screenshot          |
 | ----------------------------- | --------------------------- | ------------------------ | --------------------------- |
-| POST `/api/cart/`             |Add to cart(Protected)(Add Bearer "tolken" in Authorization) |![](screenshots/Post_Cart.png)|![](screenshots/POST_Cart_.png)         |
-| GET `/api/cart/`              | Get cart (Protected)        |![](screenshots/GET_Cart.png)                                 |    ![](screenshots/POST_Cart.png)      |
+| POST `/api/cart/`             |Add to cart(Protected)(Add Bearer "tolken" in Authorization)| ![](screenshots/Post_Cart.png)|![](screenshots/POST_Cart_.png)         |
+| GET `/api/cart/`              | Get cart (Protected)        |![](screenshots/GET_Cart.png) |![](screenshots/POST_Cart.png)      |
 | PUT `/api/cart/:productId`    | Update quantity (Protected) |![](screenshots/PUT_Cart_Item.png) |![](screenshots/PUT_Cart_Item_.png) |
 | DELETE `/api/cart/:productId` | Remove item (Protected)     |![](screenshots/DELETE_Cart_Item.png)   |![](screenshots/DELETE_Cart.png) |
 
@@ -93,7 +93,7 @@ All API endpoints tested using ThunderClient with results verified in MongoDB At
 
 ```
 shoppyglobe/
-├── backend/
+├── server/
 │   ├── config/
 │   ├── controllers/
 │   ├── middleware/
@@ -103,7 +103,7 @@ shoppyglobe/
 │   ├── server.js
 │   ├── package.json
 │
-├── frontend/
+├── client/
 │   ├── public/
 │   ├── src/
 │   │   ├── api/
@@ -150,14 +150,14 @@ VITE_API_BASE_URL=http://localhost:5000/api
 ### 1️⃣ Clone the repository
 
 ```bash
-git clone https://github.com/your-username/shoppyglobe-fullstack.git
-cd shoppyglobe-fullstack
+git clone https://github.com/mujahidsayyed09/ShoppyGlobe-V2.git
+cd ShoppyGlobe-V2
 ```
 
 ### 2️⃣ Backend setup
 
 ```bash
-cd backend
+cd server
 npm install
 npm start
 ```
@@ -165,7 +165,7 @@ npm start
 ### 3️⃣ Frontend setup
 
 ```bash
-cd frontend
+cd client
 npm install
 npm run dev
 ```
@@ -176,8 +176,8 @@ Open browser at: [http://localhost:5173](http://localhost:5173)
 
 ## 🚀 Deployment
 
-**Frontend:** Vercel
-**Backend:** Render
+**Frontend:** https://shoppyglobev2.netlify.app
+**Backend:** https://shoppyglobe-v2.onrender.com
 
 Deploy with your GitHub and connect environment variables accordingly.
 
