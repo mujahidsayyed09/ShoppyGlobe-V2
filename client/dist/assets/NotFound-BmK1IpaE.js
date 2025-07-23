@@ -1,0 +1,1 @@
+import{j as o,L as n}from"./index-BIE8hNBd.js";function e(){return o.jsxs("div",{className:"notfound-container",children:[o.jsx("h1",{children:"404"}),o.jsx("p",{children:"Oops! Page not found."}),o.jsx(n,{to:"/",className:"home-link",children:"Go to Home"})]})}export{e as default};

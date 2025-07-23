@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { BASE_URL } from "../../config";
 
-//  Load cart from localStorage
+// Load cart from localStorage
 const loadCartFromLocalStorage = () => {
   try {
     const cart = localStorage.getItem("cart");
@@ -13,7 +13,7 @@ const loadCartFromLocalStorage = () => {
   }
 };
 
-//  Save cart to localStorage
+// Save cart to localStorage
 const saveCartToLocalStorage = (cart) => {
   try {
     localStorage.setItem("cart", JSON.stringify(cart));
@@ -22,18 +22,33 @@ const saveCartToLocalStorage = (cart) => {
   }
 };
 
+// Helper to get Auth Headers
+const getAuthHeaders = () => {
+  const user = JSON.parse(localStorage.getItem("userInfo"));
+  const token = user?.token;
+  return {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+};
+
 // Add product to cart
 export const addProductToCart = createAsyncThunk(
   "cart/addProduct",
   async (product, { rejectWithValue }) => {
     try {
-      const res = await axios.post(`${BASE_URL}/api/cart`, {
-        productId: product._id,
-        name: product.name,
-        image: product.image,
-        price: product.price,
-        quantity: 1,
-      });
+      const res = await axios.post(
+        `${BASE_URL}/api/cart`,
+        {
+          productId: product._id,
+          name: product.name,
+          image: product.image,
+          price: product.price,
+          quantity: 1,
+        },
+        getAuthHeaders()
+      );
       return res.data;
     } catch (err) {
       return rejectWithValue(err.response?.data || err.message);
@@ -46,10 +61,11 @@ export const updateProductQuantity = createAsyncThunk(
   "cart/updateQuantity",
   async ({ productId, quantity }, { rejectWithValue }) => {
     try {
-      const res = await axios.put(`${BASE_URL}/api/cart`, {
-        productId,
-        quantity,
-      });
+      const res = await axios.put(
+        `${BASE_URL}/api/cart`,
+        { productId, quantity },
+        getAuthHeaders()
+      );
       return res.data;
     } catch (err) {
       return rejectWithValue(err.response?.data || err.message);
@@ -62,7 +78,7 @@ export const removeProductFromCart = createAsyncThunk(
   "cart/removeProduct",
   async (id, { rejectWithValue }) => {
     try {
-      await axios.delete(`${BASE_URL}/api/cart/${id}`);
+      await axios.delete(`${BASE_URL}/api/cart/${id}`, getAuthHeaders());
       return id;
     } catch (err) {
       return rejectWithValue(err.response?.data || err.message);
@@ -72,8 +88,14 @@ export const removeProductFromCart = createAsyncThunk(
 
 const cartSlice = createSlice({
   name: "cart",
-  initialState: loadCartFromLocalStorage(), //  load cart on init
+  initialState: loadCartFromLocalStorage(),
   reducers: {},
+  reducers: {
+    clearCart: () => {
+      saveCartToLocalStorage([]); // Clear localStorage as well
+      return []; 
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(addProductToCart.fulfilled, (state, action) => {
@@ -85,7 +107,7 @@ const cartSlice = createSlice({
         } else {
           state.push(action.payload);
         }
-        saveCartToLocalStorage(state); //  save after change
+        saveCartToLocalStorage(state);
       })
       .addCase(updateProductQuantity.fulfilled, (state, action) => {
         const existing = state.find(
@@ -94,14 +116,15 @@ const cartSlice = createSlice({
         if (existing) {
           existing.quantity = action.payload.quantity;
         }
-        saveCartToLocalStorage(state); //  save after change
+        saveCartToLocalStorage(state);
       })
       .addCase(removeProductFromCart.fulfilled, (state, action) => {
         const newState = state.filter((item) => item._id !== action.payload);
-        saveCartToLocalStorage(newState); //  save after removal
+        saveCartToLocalStorage(newState);
         return newState;
       });
   },
 });
 
+export const { clearCart } = cartSlice.actions;
 export default cartSlice.reducer;
