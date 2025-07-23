@@ -25,7 +25,7 @@ export default function ProductItem({ product }) {
       <div className="product-content">
         <h3 className="product-title">{product.name}</h3>
         <p className="product-stock">Stock: {product.stockQuantity}</p>
-        <p className="product-price">₹{product.price}</p>
+        <p className="product-price">${product.price}</p>
         <div className="product-buttons">
           <Link to={`/product/${product._id}`} className="product-link">
             View Details

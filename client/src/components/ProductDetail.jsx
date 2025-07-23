@@ -41,7 +41,7 @@ export default function ProductDetail() {
         <h2 className="product-title">{product.name}</h2>
         <p className="product-brand">Brand: {product.brand}</p>
         <p className="product-category">Category: {product.category}</p>
-        <p className="product-price">₹{product.price}</p>
+        <p className="product-price">${product.price}</p>
         <p className="product-desc">{product.description}</p>
         <button onClick={handleAddToCart} className="add-cart-btn">
           Add to Cart
