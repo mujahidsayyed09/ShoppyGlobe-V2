@@ -75,8 +75,8 @@ All API endpoints tested using ThunderClient with results verified in MongoDB At
 
 | API Route                     | Description                 | ThunderClient Screenshot | MongoDB Screenshot          |
 | ----------------------------- | --------------------------- | ------------------------ | --------------------------- |
-| POST `/api/cart/`             |Add to cart(Protected)(Add Bearer <tolken> in Header) |![](screenshots/POST_Cart.png)|![](screenshots/POST_Cart_.png)         |
-| GET `/api/cart/`              | Get cart (Protected)        |![](screenshots/GET_Cart.png)|![](screenshots/POST_Cart.png)    |
+| POST `/api/cart/`             |Add to cart(Protected)(Add Bearer "tolken" in Authorization) |![](screenshots/Post_Cart.png)|![](screenshots/POST_Cart_.png)         |
+| GET `/api/cart/`              | Get cart (Protected)        |![](screenshots/GET_Cart.png)                                 |    ![](screenshots/POST_Cart.png)      |
 | PUT `/api/cart/:productId`    | Update quantity (Protected) |![](screenshots/PUT_Cart_Item.png) |![](screenshots/PUT_Cart_Item_.png) |
 | DELETE `/api/cart/:productId` | Remove item (Protected)     |![](screenshots/DELETE_Cart_Item.png)   |![](screenshots/DELETE_Cart.png) |
 
