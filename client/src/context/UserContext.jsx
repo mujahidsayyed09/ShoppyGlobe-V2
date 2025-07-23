@@ -14,6 +14,7 @@ export function UserProvider({ children }) {
   const login = () => setIsLoggedIn(true);
   const logout = () => {
     localStorage.removeItem("userInfo");
+    localStorage.removeItem("cart");
     setIsLoggedIn(false);
   };
 

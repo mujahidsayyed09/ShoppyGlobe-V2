@@ -2,7 +2,27 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { BASE_URL } from "../../config";
 
-//  Add product to cart
+//  Load cart from localStorage
+const loadCartFromLocalStorage = () => {
+  try {
+    const cart = localStorage.getItem("cart");
+    return cart ? JSON.parse(cart) : [];
+  } catch (err) {
+    console.error("Failed to load cart from localStorage:", err);
+    return [];
+  }
+};
+
+//  Save cart to localStorage
+const saveCartToLocalStorage = (cart) => {
+  try {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  } catch (err) {
+    console.error("Failed to save cart to localStorage:", err);
+  }
+};
+
+// Add product to cart
 export const addProductToCart = createAsyncThunk(
   "cart/addProduct",
   async (product, { rejectWithValue }) => {
@@ -52,7 +72,7 @@ export const removeProductFromCart = createAsyncThunk(
 
 const cartSlice = createSlice({
   name: "cart",
-  initialState: [],
+  initialState: loadCartFromLocalStorage(), //  load cart on init
   reducers: {},
   extraReducers: (builder) => {
     builder
@@ -65,6 +85,7 @@ const cartSlice = createSlice({
         } else {
           state.push(action.payload);
         }
+        saveCartToLocalStorage(state); //  save after change
       })
       .addCase(updateProductQuantity.fulfilled, (state, action) => {
         const existing = state.find(
@@ -73,9 +94,12 @@ const cartSlice = createSlice({
         if (existing) {
           existing.quantity = action.payload.quantity;
         }
+        saveCartToLocalStorage(state); //  save after change
       })
       .addCase(removeProductFromCart.fulfilled, (state, action) => {
-        return state.filter((item) => item._id !== action.payload);
+        const newState = state.filter((item) => item._id !== action.payload);
+        saveCartToLocalStorage(newState); //  save after removal
+        return newState;
       });
   },
 });
