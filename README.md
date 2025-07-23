@@ -61,22 +61,21 @@ All API endpoints tested using ThunderClient with results verified in MongoDB At
 
 | API Route                 | Description              | ThunderClient Screenshot | MongoDB Screenshot           |
 | ------------------------- | ------------------------ | ------------------------ | ---------------------------- |
-| POST `/api/auth/register` | Register a new user      |![](screenshots/user_registration.png)|                              |
-| POST `/api/auth/login`    | Login user and get token | ![Login](placeholder)    | ![User Check](placeholder)   |
+| POST `/api/auth/register` | Register a new user      |![](screenshots/user_registration.png)|![](user_registered.png)|
+| POST `/api/auth/login`    | Login user and get token | ![](user_login.png)      |![](user_registered.png)      |
 
 ### 📦 Product Routes
 
 | API Route               | Description        | ThunderClient Screenshot | MongoDB Screenshot           |
 | ----------------------- | ------------------ | ------------------------ | ---------------------------- |
-| POST `/api/products/`   | Create product     | ![Create](placeholder)   | ![Product DB](placeholder)   |
-| GET `/api/products/`    | Get all products   | ![Fetch](placeholder)    | ![All Products](placeholder) |
-| GET `/api/products/:id` | Get single product | ![Single](placeholder)   | ![One Product](placeholder)  |
+| GET `/api/products/`    | Get all products   | ![](GET_Products.png)    | ![](All_Products.png)        |
+| GET `/api/products/:id` | Get single product | ![](GET_ProductsById.png)| ![](All_Products.png)        |
 
 ### 🛒 Cart Routes
 
 | API Route                     | Description                 | ThunderClient Screenshot | MongoDB Screenshot          |
 | ----------------------------- | --------------------------- | ------------------------ | --------------------------- |
-| POST `/api/cart/`             | Add to cart (Protected)     | ![Add](placeholder)      | ![Cart Add](placeholder)    |
+| POST `/api/cart/`             | Add to cart (Protected)(Add Bearer <tolken> in Header)  | ![](POST_Cart.png)       | ![](POST_Cart_.png)         |
 | GET `/api/cart/`              | Get cart (Protected)        | ![Get](placeholder)      | ![Cart Get](placeholder)    |
 | PUT `/api/cart/:productId`    | Update quantity (Protected) | ![Update](placeholder)   | ![Cart Update](placeholder) |
 | DELETE `/api/cart/:productId` | Remove item (Protected)     | ![Remove](placeholder)   | ![Cart Remove](placeholder) |
