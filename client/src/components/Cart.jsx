@@ -72,7 +72,7 @@ export default function Cart() {
         ))}
       </ul>
       <div className="cart-total">
-        <p>Total: ₹{getTotalPrice()}</p>
+        <p>Total: ${getTotalPrice()}</p>
         <button className="checkout-btn">Checkout</button>
       </div>
     </div>
