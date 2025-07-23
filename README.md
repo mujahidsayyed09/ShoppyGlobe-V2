@@ -1,214 +1,205 @@
-# ShoppyGlobe - E-commerce Full Stack Application
+# 🛍️ ShoppyGlobe E-commerce App
 
-A fully functional MERN stack e-commerce application with user authentication, product listing, and cart management. The frontend is built using React.js, and the backend uses Node.js, Express.js, and MongoDB.
+A full-stack e-commerce app with product listings, cart functionality, and user authentication.
 
 ---
 
-## 📁 Project Structure
+## 📑 Table of Contents
+
+* [🚀 Tech Stack](#-tech-stack)
+* [🧾 Features](#-features)
+* [🗄️ MongoDB Integration](#️-mongodb-integration)
+* [🧪 ThunderClient + MongoDB Atlas Testing](#-thunderclient--mongodb-atlas-testing)
+* [📁 Folder Structure](#-folder-structure)
+* [🔧 Environment Variables](#-environment-variables)
+* [📦 Installation](#-installation)
+* [🚀 Deployment](#-deployment)
+* [👤 Author](#-author)
+
+---
+
+## 🚀 Tech Stack
+
+**Frontend:** React, CSS, Axios, React Router
+**Backend:** Node.js, Express.js, MongoDB (Atlas)
+**Authentication:** JWT
+
+---
+
+## 🧾 Features
+
+* User login & signup
+* Browse products
+* Add to cart (protected route)
+* Dynamic cart count & user info
+* Protected checkout route
+
+---
+
+## 🗄️ MongoDB Integration
+
+**Database:** `shoppyglobe`
+
+**Collections:**
+
+* `products`: Stores product data (name, price, description, stock)
+* `carts`: Stores cart items (product IDs and quantities)
+* `users`: Stores user authentication data
+
+**CRUD Operations:**
+
+* **Products:** Create, Read, Update, Delete
+* **Cart Items:** Add to Cart, Update Quantity, Remove Items, Clear Cart
+
+---
+
+## 🧪 ThunderClient + MongoDB Atlas Testing
+
+All API endpoints tested using ThunderClient with results verified in MongoDB Atlas.
+
+### 🧍 Authentication Routes
+
+| API Route                 | Description              | ThunderClient Screenshot | MongoDB Screenshot           |
+| ------------------------- | ------------------------ | ------------------------ | ---------------------------- |
+| POST `/api/auth/register` | Register a new user      | ![Register](<img width="1088" height="641" alt="image" src="https://github.com/user-attachments/assets/92098a95-b983-42b3-9b5c-7b62fd6b79b2" />
+) | ![User Created](<img width="1220" height="557" alt="image" src="https://github.com/user-attachments/assets/d26db517-4e5c-41aa-abf9-6f5c9bc2fa34" />
+) |
+| POST `/api/auth/login`    | Login user and get token | ![Login](placeholder)    | ![User Check](placeholder)   |
+
+### 📦 Product Routes
+
+| API Route               | Description        | ThunderClient Screenshot | MongoDB Screenshot           |
+| ----------------------- | ------------------ | ------------------------ | ---------------------------- |
+| POST `/api/products/`   | Create product     | ![Create](placeholder)   | ![Product DB](placeholder)   |
+| GET `/api/products/`    | Get all products   | ![Fetch](placeholder)    | ![All Products](placeholder) |
+| GET `/api/products/:id` | Get single product | ![Single](placeholder)   | ![One Product](placeholder)  |
+
+### 🛒 Cart Routes
+
+| API Route                     | Description                 | ThunderClient Screenshot | MongoDB Screenshot          |
+| ----------------------------- | --------------------------- | ------------------------ | --------------------------- |
+| POST `/api/cart/`             | Add to cart (Protected)     | ![Add](placeholder)      | ![Cart Add](placeholder)    |
+| GET `/api/cart/`              | Get cart (Protected)        | ![Get](placeholder)      | ![Cart Get](placeholder)    |
+| PUT `/api/cart/:productId`    | Update quantity (Protected) | ![Update](placeholder)   | ![Cart Update](placeholder) |
+| DELETE `/api/cart/:productId` | Remove item (Protected)     | ![Remove](placeholder)   | ![Cart Remove](placeholder) |
+| DELETE `/api/cart/clear`      | Clear entire cart           | ![Clear](placeholder)    | ![Cart Clear](placeholder)  |
+
+### 👤 User Routes
+
+| API Route               | Description         | ThunderClient Screenshot | MongoDB Screenshot           |
+| ----------------------- | ------------------- | ------------------------ | ---------------------------- |
+| GET `/api/user/profile` | Get user profile    | ![Profile](placeholder)  | ![User Profile](placeholder) |
+| PUT `/api/user/profile` | Update user profile | ![Update](placeholder)   | ![User Updated](placeholder) |
+
+### ⚠️ Miscellaneous
+
+| Test           | Description         | Screenshot            |
+| -------------- | ------------------- | --------------------- |
+| Invalid Route  | 404 Not Found route | ![404](placeholder)   |
+| Error Handling | Global error check  | ![Error](placeholder) |
+
+---
+
+## 📁 Folder Structure
 
 ```
 shoppyglobe/
-├── client/          # React Frontend
-├── server/          # Node/Express Backend
-├── README.md        # Project Documentation
+├── backend/
+│   ├── config/
+│   ├── controllers/
+│   ├── middleware/
+│   ├── models/
+│   ├── routes/
+│   ├── .env
+│   ├── server.js
+│   ├── package.json
+│
+├── frontend/
+│   ├── public/
+│   ├── src/
+│   │   ├── api/
+│   │   ├── assets/
+│   │   ├── components/
+│   │   ├── context/
+│   │   ├── hooks/
+│   │   ├── utils/
+│   │   ├── App.jsx
+│   │   ├── main.jsx
+│   │   ├── index.css
+│   ├── .env
+│   ├── vite.config.js
+│   ├── package.json
+│
+└── README.md
 ```
 
 ---
 
-## 🛠️ How to Set Up This Project Locally
+## 🔧 Environment Variables
 
-### Prerequisites
+### 🔒 Backend `.env`
 
-* Node.js and npm installed
-* MongoDB running locally or a cloud URI (MongoDB Atlas)
-
-### 1. Clone the Repository
-
-```bash
-git clone https://github.com/mujahidsayyed09/ShoppyGlobe-V2.git
-cd shoppyglobe
+```
+NODE_ENV=development
+PORT=5000
+MONGO_URI=<your-mongodb-uri>
+JWT_SECRET=<your-secret-key>
 ```
 
-### 2. Install Backend Dependencies
+### 🌐 Frontend `.env`
+
+```
+VITE_API_BASE_URL=http://localhost:5000/api
+```
+
+> 🔁 Update to production URL after deployment.
+
+---
+
+## 📦 Installation
+
+### 1️⃣ Clone the repository
 
 ```bash
-cd server
+git clone https://github.com/your-username/shoppyglobe-fullstack.git
+cd shoppyglobe-fullstack
+```
+
+### 2️⃣ Backend setup
+
+```bash
+cd backend
 npm install
-```
-
-### 3. Set Up Environment Variables
-
-Create a `.env` file inside the `server` directory:
-
-```env
-PORT=5100
-MONGO_URI=mongodb://localhost:27017/shoppyglobe
-JWT_SECRET=your_jwt_secret_key
-```
-
-### 4. Start Backend Server
-
-```bash
 npm start
 ```
 
-Backend will run on: `http://localhost:5100`
-
-### 5. Install Frontend Dependencies
+### 3️⃣ Frontend setup
 
 ```bash
-cd ../client
+cd frontend
 npm install
-```
-
-### 6. Configure Frontend Base URL
-
-Edit `client/src/config.js`:
-
-```js
-export const BASE_URL = "http://localhost:5100";
-```
-
-### 7. Start Frontend Server
-
-```bash
 npm run dev
 ```
 
-Frontend will run on: `http://localhost:5173`
+Open browser at: [http://localhost:5173](http://localhost:5173)
 
 ---
 
-## 📦 ThunderClient CRUD Examples
+## 🚀 Deployment
 
-### 🔹 Create Product (POST)
+**Frontend:** Vercel
+**Backend:** Render
 
-**Endpoint:** `POST /api/products`
-**Body:**
-
-```json
-{
-  "name": "Shirt",
-  "image": "https://example.com/shirt.jpg",
-  "price": 499
-}
-```
-
-**Screenshot:**
-![POST product](screenshots/post-product.png)
+Deploy with your GitHub and connect environment variables accordingly.
 
 ---
 
-### 🔹 Read All Products (GET)
-
-**Endpoint:** `GET /api/products`
-**Screenshot:**
-![GET products](screenshots/get-products.png)
-
----
-
-### 🔹 Update Product (PUT)
-
-**Endpoint:** `PUT /api/products/:id`
-**Body:**
-
-```json
-{
-  "price": 599
-}
-```
-
-**Screenshot:**
-![PUT product](screenshots/put-product.png)
-
----
-
-### 🔹 Delete Product (DELETE)
-
-**Endpoint:** `DELETE /api/products/:id`
-**Screenshot:**
-![DELETE product](screenshots/delete-product.png)
-
----
-
-## 🧑‍💻 User Authentication
-
-* Register: `POST /api/auth/register`
-* Login: `POST /api/auth/login`
-
-You’ll receive a JWT token on login, which is used for protected routes.
-
----
-
-## 🛒 Cart Functionality (MongoDB + LocalStorage)
-
-* Add to cart: `POST /api/cart`
-* Update quantity: `PUT /api/cart`
-* Remove from cart: `DELETE /api/cart/:id`
-
-Cart is persisted in localStorage for frontend state and MongoDB for backend storage.
-
----
-
-## 🚀 How to Deploy the Website
-
-### Frontend (Netlify)
-
-1. Push your frontend code (`client/`) to GitHub.
-2. Go to [https://netlify.com](https://netlify.com)
-3. Create a new site from GitHub.
-4. Set build command:
-
-```bash
-npm run build
-```
-
-5. Set publish directory:
-
-```
-dist
-```
-
-6. Click "Deploy"
-
-### Backend (Render)
-
-1. Push your backend code (`server/`) to GitHub.
-2. Go to [https://render.com](https://render.com)
-3. Create a new web service.
-4. Set environment variables (same as `.env`)
-5. Build & Start commands:
-
-```bash
-npm install
-npm start
-```
-
-6. Render URL will be your live API URL.
-
----
-
-## ✅ Important Notes
-
-* Make sure to allow CORS in backend (`server/index.js`)
-* Frontend `BASE_URL` must match backend Render deployment
-* Cart should be cleared on logout (use `localStorage.removeItem("cart")`)
-* Dynamic routes like `/cart`, `/login`, `/register` must be handled via Netlify's `_redirects`
-
-Create a `_redirects` file in `client/public/`:
-
-```
-/*    /index.html   200
-```
-
----
-
-## 📬 Contact
+## 👤 Author
 
 **Mujahid Sayyed**
 📧 [mujahidsayed203@gmail.com](mailto:mujahidsayed203@gmail.com)
-🔗 [LinkedIn](https://www.linkedin.com/in/mujahidsayyed/)
+🔗 [GitHub](https://github.com/mujahidsayyed09) | [LinkedIn](https://www.linkedin.com/in/mujahidsayyed/) | [Portfolio](https://mujahidsayyed09.github.io/PORTFOLIO/)
 
 ---
 
-Happy Coding 🚀
+> ✅ Feel free to fork, contribute, and improve this project!
